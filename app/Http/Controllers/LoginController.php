@@ -18,6 +18,6 @@ class LoginController extends Controller
         if(!auth()->attempt($request->only('email','password'),$request->remember)){
             return back()->with('mensaje','Usuario o contraseña incorrecto');
         }
-        return redirect()->route('post.index');
+        return redirect()->route('post.index',auth()->user()->username);
     }
 }
